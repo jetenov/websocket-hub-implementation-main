@@ -1,0 +1,11 @@
+FROM golang:latest
+
+WORKDIR ./build
+
+COPY go.mod .
+COPY go.sum .
+
+COPY ./server/* ./
+RUN go build -o server
+
+CMD ["./server"]

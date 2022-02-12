@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  server:
+    container_name: agg-server
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile1
+
+  client:
+    container_name: agg-client
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    ports:
+      - "8000:8000"
+    depends_on:
+      - server

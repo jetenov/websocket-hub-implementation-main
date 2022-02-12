@@ -1,0 +1,12 @@
+FROM golang:latest
+
+WORKDIR ./build
+
+COPY go.mod .
+COPY go.sum .
+
+COPY ./client/* ./
+RUN go build -o client
+
+EXPOSE 8000
+CMD ["./client"]
